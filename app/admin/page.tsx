@@ -3,28 +3,50 @@ import { useState, useEffect } from "react";
 import StatCard from "@/components/admin/StatCard";
 import Link from "next/link";
 
-interface Stats { projects: number; skills: number; experience: number; sessions: number; leads: number; }
+interface Stats {
+  projects: number;
+  skills: number;
+  experience: number;
+  sessions: number;
+  leads: number;
+  messages: number;
+  unreadMessages: number;
+}
 
 export default function AdminDashboard() {
-  const [stats, setStats] = useState<Stats>({ projects: 0, skills: 0, experience: 0, sessions: 0, leads: 0 });
+  const [stats, setStats] = useState<Stats>({
+    projects: 0,
+    skills: 0,
+    experience: 0,
+    sessions: 0,
+    leads: 0,
+    messages: 0,
+    unreadMessages: 0,
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadStats() {
       try {
-        const [projects, skills, experience, sessions] = await Promise.all([
+        const [projects, skills, experience, sessions, contacts] = await Promise.all([
           fetch("/api/admin/projects").then((r) => r.json()),
           fetch("/api/admin/skills").then((r) => r.json()),
           fetch("/api/admin/experience").then((r) => r.json()),
           fetch("/api/admin/chat-sessions").then((r) => r.json()),
+          fetch("/api/admin/contacts").then((r) => r.json()),
         ]);
+
         const leads = Array.isArray(sessions) ? sessions.filter((s: any) => s.isLead).length : 0;
+        const unreadMessages = Array.isArray(contacts) ? contacts.filter((c: any) => !c.read).length : 0;
+
         setStats({
           projects: Array.isArray(projects) ? projects.length : 0,
           skills: Array.isArray(skills) ? skills.length : 0,
           experience: Array.isArray(experience) ? experience.length : 0,
           sessions: Array.isArray(sessions) ? sessions.length : 0,
           leads,
+          messages: Array.isArray(contacts) ? contacts.length : 0,
+          unreadMessages,
         });
       } catch (e) {
         console.error("Stats fetch failed:", e);
@@ -40,6 +62,7 @@ export default function AdminDashboard() {
     { href: "/admin/skills", icon: "💡", label: "Manage Skills", desc: "Update your technical skill set" },
     { href: "/admin/experience", icon: "🏢", label: "Manage Experience", desc: "Add job or education history" },
     { href: "/admin/company", icon: "🏗️", label: "Edit Company", desc: "Update ARintelligenceX details" },
+    { href: "/admin/contacts", icon: "📬", label: "View Inquiries", desc: "Read and reply to contact form submissions" },
     { href: "/admin/ai-kb", icon: "🤖", label: "AI Knowledge Base", desc: "Control what Ravi AI knows" },
     { href: "/admin/chat-sessions", icon: "💬", label: "View Chat Sessions", desc: "See visitor conversations and leads" },
   ];
@@ -52,22 +75,28 @@ export default function AdminDashboard() {
       </div>
 
       {loading ? (
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
-          {[...Array(5)].map((_, i) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
+          {[...Array(6)].map((_, i) => (
             <div key={i} className="h-28 rounded-xl bg-white/5 animate-pulse border border-white/5" />
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
           <StatCard label="Projects" value={stats.projects} icon="🚀" color="violet" />
           <StatCard label="Skills" value={stats.skills} icon="💡" color="blue" />
           <StatCard label="Experience" value={stats.experience} icon="🏢" color="green" />
+          <StatCard
+            label={stats.unreadMessages > 0 ? `Messages (${stats.unreadMessages} new)` : "Messages"}
+            value={stats.messages}
+            icon="📬"
+            color="violet"
+          />
           <StatCard label="Chat Sessions" value={stats.sessions} icon="💬" color="orange" />
-          <StatCard label="Leads" value={stats.leads} icon="🎯" color="red" />
+          <StatCard label="AI Leads" value={stats.leads} icon="🎯" color="red" />
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {navItems.map((item) => (
           <Link
             key={item.href}

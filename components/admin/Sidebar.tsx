@@ -8,6 +8,7 @@ const navItems = [
   { href: "/admin/skills", label: "Skills", icon: "💡" },
   { href: "/admin/experience", label: "Experience", icon: "🏢" },
   { href: "/admin/company", label: "Company", icon: "🏗️" },
+  { href: "/admin/contacts", label: "Messages", icon: "📬" },
   { href: "/admin/ai-kb", label: "AI Knowledge Base", icon: "🤖" },
   { href: "/admin/chat-sessions", label: "Chat Sessions", icon: "💬" },
 ];
