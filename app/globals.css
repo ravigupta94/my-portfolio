@@ -59,12 +59,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  cursor: none; /* Custom cursor active */
+  /* cursor: none; Custom cursor active on public pages */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Fallback cursor for elements that don't need custom cursor */
-a, button, [role="button"] {
+/* Fallback cursor for public elements */
+.public-site a, .public-site button, .public-site [role="button"] {
+  cursor: none;
+}
+.public-site {
   cursor: none;
 }
 
