@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowUp, Mail } from 'lucide-react';
+import { ArrowUp, Mail, ExternalLink } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 
@@ -16,7 +16,10 @@ const quickLinks = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Project Cost Calculator', href: '#estimate' },
   { label: 'Company', href: '#company' },
+  { label: 'Resume (Google Drive)', href: 'https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link', external: true },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -58,12 +61,15 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-sm text-[var(--text-secondary)] hover:text-[var(--accent-purple)] transition-colors"
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
+                    className="text-sm text-[var(--text-secondary)] hover:text-[var(--accent-purple)] transition-colors inline-flex items-center gap-1.5"
                   >
-                    {link.label}
+                    <span>{link.label}</span>
+                    {link.external && <ExternalLink size={12} className="opacity-70" />}
                   </a>
                 </li>
               ))}

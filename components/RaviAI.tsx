@@ -7,11 +7,11 @@ import ReactMarkdown from 'react-markdown';
 import { v4 as uuidv4 } from 'uuid';
 
 const PROMPT_SUGGESTIONS = [
+  { icon: '📄', label: 'Resume / CV', prompt: 'Can I see Ravi\'s official resume or CV?' },
   { icon: '🚀', label: 'Top Projects', prompt: 'Tell me about Ravi\'s top featured projects.' },
   { icon: '💼', label: 'Hire Ravi', prompt: 'How can I hire Ravi or ARintelligenceX for a project?' },
-  { icon: '🏢', label: 'ARintelligenceX', prompt: 'What services does ARintelligenceX offer?' },
   { icon: '💰', label: 'Pricing Estimate', prompt: 'How much would a custom web app or SaaS platform cost?' },
-  { icon: '⚡', label: 'Tech Stack', prompt: 'What are Ravi\'s core frontend and backend technologies?' },
+  { icon: '🏢', label: 'ARintelligenceX', prompt: 'What services does ARintelligenceX offer?' },
 ];
 
 export default function RaviAI() {

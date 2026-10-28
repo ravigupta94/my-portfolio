@@ -77,12 +77,20 @@ export default function About() {
               </p>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-3 reveal">
+            <div className="mt-8 flex flex-wrap items-center gap-3 reveal">
               {['React', 'Next.js', 'Node.js', 'MongoDB', 'TypeScript'].map((tech) => (
                 <span key={tech} className="tech-badge">
                   {tech}
                 </span>
               ))}
+              <a
+                href="https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline text-xs py-1.5 px-3 ml-1 inline-flex items-center gap-1.5 hover:border-violet-500"
+              >
+                <span>📄 View Resume (Google Drive)</span>
+              </a>
             </div>
           </div>
 

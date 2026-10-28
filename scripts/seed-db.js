@@ -1,8 +1,15 @@
-const dns = require('dns');
-dns.setServers(['8.8.8.8', '1.1.1.1']);
-
+const fs = require('fs');
 const mongoose = require('mongoose');
-const uri = 'mongodb+srv://raviguptasr200_db_user:E1bE8vYc0PVGlvxG@cluster0.icjkwzz.mongodb.net/portfolio?retryWrites=true&w=majority';
+
+let uri = process.env.MONGODB_URI;
+if (!uri && fs.existsSync('.env.local')) {
+  const envContent = fs.readFileSync('.env.local', 'utf8');
+  const match = envContent.match(/MONGODB_URI=([^\r\n]+)/);
+  if (match) uri = match[1].trim();
+}
+if (!uri) {
+  uri = 'mongodb://raviguptasr200_db_user:E1bE8vYc0PVGlvxG@ac-eoxjuyu-shard-00-00.icjkwzz.mongodb.net:27017,ac-eoxjuyu-shard-00-01.icjkwzz.mongodb.net:27017,ac-eoxjuyu-shard-00-02.icjkwzz.mongodb.net:27017/portfolio?ssl=true&replicaSet=atlas-7om8ko-shard-0&authSource=admin&retryWrites=true&w=majority';
+}
 
 async function runSeed() {
   await mongoose.connect(uri);
@@ -35,6 +42,7 @@ async function runSeed() {
       fullName: String, role: String, location: String,
       contact: { email: String, phone: String },
       social: { linkedin: String, github: String, instagram: String },
+      resume: String,
     },
     about: String,
     skills: { frontend: String, backend: String, database: String, other: String },
@@ -191,6 +199,7 @@ async function runSeed() {
         github: 'https://github.com/ravigupta94',
         instagram: 'https://www.instagram.com/_ravi_gupta9000/',
       },
+      resume: 'https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link',
     },
     about: 'Ravi is a full stack developer with a practical, no-nonsense approach to building software. Alongside his development work, he founded ARintelligenceX, a small team focused on doing honest, quality work for clients.',
     skills: {
@@ -213,6 +222,7 @@ async function runSeed() {
     services: 'Custom web application development, Mobile/web app development, AI integration & AI-powered features, UI/UX design, Email migration & setup, CRM/ERP systems, Digital marketing',
     conversationRules: [
       'If asked "Who is Ravi?" -> give the About summary, offer to share skills/projects/company info',
+      'If asked for Ravi\'s resume, CV, or credentials -> directly provide the official Google Drive link: https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link and mention the on-site resume modal',
       'If asked about projects -> summarize the 3 projects, ask if they want details on a specific one',
       'If asked "Is Ravi available for freelance/hire?" -> say yes, direct them to fill the contact form or email directly, and ask briefly what kind of project they have in mind',
       'If asked about pricing/cost estimate -> explain that cost depends on scope, suggest sending project details via contact form',
@@ -222,6 +232,10 @@ async function runSeed() {
       {
         question: 'Who is Ravi Gupta?',
         answer: 'Ravi is a full stack developer and founder of ARintelligenceX, a tech company based in Noida. He builds real, working software — web apps, AI features, admin systems.'
+      },
+      {
+        question: "Can I see Ravi's resume or CV?",
+        answer: "Yes! Ravi's official resume is available on Google Drive here: https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link . You can also view or print the ATS-friendly version directly from this website."
       },
       {
         question: 'What has Ravi built?',

@@ -1,8 +1,13 @@
 import { NextResponse } from 'next/server';
+import dns from 'dns';
 import { connectDB } from '@/lib/mongodb';
 import KnowledgeBase from '@/models/KnowledgeBase';
 import ChatSession from '@/models/ChatSession';
 import { buildSystemPrompt } from '@/lib/systemPrompt';
+
+try {
+  dns.setDefaultResultOrder('ipv4first');
+} catch {}
 
 // Allow responses up to 30 seconds
 export const maxDuration = 30;

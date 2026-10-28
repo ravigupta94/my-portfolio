@@ -231,17 +231,26 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-3.5"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3.5 flex-wrap"
           style={{ animation: 'fadeUp 0.6s ease 0.75s both' }}
         >
           <a href="#projects" className="btn-primary">
             <span>View Projects</span>
           </a>
+          <a
+            href="https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline border-[var(--accent-purple)] text-[var(--accent-purple)] hover:bg-[var(--accent-purple)]/10 inline-flex items-center gap-2"
+          >
+            <span>📄 View Resume (Drive)</span>
+            <ExternalLink size={14} />
+          </a>
           <a href="#estimate" className="btn-outline">
-            <span>⚡ Calculate Project Cost</span>
+            <span>⚡ Calculate Cost</span>
           </a>
           <a href="#contact" className="btn-outline">
-            <span>Hire Me / Contact</span>
+            <span>Hire Me</span>
           </a>
         </div>
 

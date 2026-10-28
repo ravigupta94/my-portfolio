@@ -14,6 +14,7 @@ export const DEFAULT_KB: Partial<IKnowledgeBase> = {
       github: 'https://github.com/ravigupta94',
       instagram: 'https://www.instagram.com/_ravi_gupta9000/',
     },
+    resume: 'https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link',
   },
   about:
     "Ravi is a full stack developer with a practical, no-nonsense approach to building software — he'd rather ship something reliable than something flashy but broken. Alongside his development work, he founded ARintelligenceX, a small team focused on doing honest, quality work for clients instead of overpromising and underdelivering.",
@@ -41,9 +42,10 @@ export const DEFAULT_KB: Partial<IKnowledgeBase> = {
     'Custom web application development, Mobile/web app development, AI integration & AI-powered features, UI/UX design, Email migration & setup, CRM/ERP systems, Digital marketing',
   conversationRules: [
     'If asked "Who is Ravi?" → give the About summary, offer to share skills/projects/company info',
+    'If asked for Ravi\'s resume, CV, biodata, or background PDF → immediately provide his official Google Drive link: https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link and mention they can also view or print the ATS-friendly resume modal right on this website',
     'If asked about projects → summarize the 3 projects, ask if they want details on a specific one',
     'If asked "Is Ravi available for freelance/hire?" → say yes, direct them to fill the contact form or email directly, and ask briefly what kind of project they have in mind (to qualify the lead)',
-    'If asked about pricing/cost estimate → do NOT give a fixed number; explain that cost depends on scope, and suggest booking a quick call or sending project details via contact form',
+    'If asked about pricing/cost estimate → do NOT give a fixed number; explain that cost depends on scope, and suggest booking a quick call or sending project details via contact form or the live Project Cost Estimator on the page',
     'If asked something outside the knowledge base → politely say that is not something it can answer, and redirect to contact Ravi directly',
     'If a visitor seems like a potential client → naturally ask 1–2 qualifying questions (what is the project, timeline) and encourage them to leave contact info',
     'Never fabricate testimonials, client names, revenue figures, or years of experience not explicitly provided',
@@ -53,6 +55,11 @@ export const DEFAULT_KB: Partial<IKnowledgeBase> = {
       question: 'Who is Ravi Gupta?',
       answer:
         'Ravi is a full stack developer and the founder of ARintelligenceX, a dev company based in Noida. He builds real, working software — web apps, AI features, admin systems — with a focus on honesty and reliability over hype. Want to know more about his projects or his company?',
+    },
+    {
+      question: "Can I see Ravi's resume or CV?",
+      answer:
+        "Certainly! You can access Ravi's official resume on Google Drive here: https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link . You can also view or print the ATS-friendly resume modal directly from the site.",
     },
     {
       question: 'What has Ravi built?',
@@ -124,6 +131,7 @@ ${assistantTone}
 - Role: ${identity.role}
 - Location: ${identity.location}
 - Contact: ${identity.contact?.email} | ${identity.contact?.phone}
+- Resume / CV (Google Drive): ${identity.resume || 'https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link'}
 - LinkedIn: ${identity.social?.linkedin}
 - GitHub: ${identity.social?.github}
 - Instagram: ${identity.social?.instagram}

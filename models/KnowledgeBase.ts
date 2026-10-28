@@ -19,6 +19,7 @@ export interface IKnowledgeBase extends Document {
       github: string;
       instagram: string;
     };
+    resume?: string;
   };
   about: string;
   skills: {
@@ -59,6 +60,7 @@ const KnowledgeBaseSchema = new Schema<IKnowledgeBase>(
         linkedin: { type: String, default: 'https://www.linkedin.com/in/ravigupta94/' },
         github: { type: String, default: 'https://github.com/ravigupta94' },
         instagram: { type: String, default: 'https://www.instagram.com/_ravi_gupta9000/' },
+        resume: { type: String, default: 'https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link' },
       },
     },
     about: { type: String, required: true },

@@ -33,12 +33,29 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             </span>
           </div>
           <div className="flex items-center gap-2">
+            <a
+              href="https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium transition-colors"
+            >
+              <ExternalLink size={13} />
+              <span>Google Drive</span>
+            </a>
+            <a
+              href="/resume.pdf"
+              download="Ravi_Gupta_Resume.pdf"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium transition-colors"
+            >
+              <Download size={13} />
+              <span>Download PDF</span>
+            </a>
             <button
               onClick={handlePrint}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-violet-600 hover:bg-violet-700 text-white text-xs font-medium transition-colors"
             >
               <Printer size={13} />
-              <span>Print / Save PDF</span>
+              <span>Print</span>
             </button>
             <button
               onClick={onClose}
