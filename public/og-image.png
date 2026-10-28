@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="50%" stop-color="#111118"/>
+      <stop offset="100%" stop-color="#190d2e"/>
+    </linearGradient>
+    <linearGradient id="purpleGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="200" cy="150" r="280" fill="#7c3aed" opacity="0.12" filter="blur(60px)"/>
+  <circle cx="1000" cy="480" r="300" fill="#3b82f6" opacity="0.1" filter="blur(80px)"/>
+  <g transform="translate(100, 220)">
+    <text font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="64" fill="#ffffff">
+      Ravi <tspan fill="url(#purpleGlow)">Gupta</tspan>
+    </text>
+    <text y="70" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="28" fill="#a78bfa">
+      Full Stack Developer &amp; Founder, ARintelligenceX
+    </text>
+    <text y="140" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="22" fill="#94a3b8">
+      Building real, scalable software solutions for businesses across India and the UK.
+    </text>
+  </g>
+</svg>
