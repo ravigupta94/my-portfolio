@@ -35,6 +35,26 @@ export default function ChatSessionsPage() {
   const safeSessions = Array.isArray(sessions) ? sessions : [];
   const filtered = filter === "leads" ? safeSessions.filter((s) => s.isLead) : safeSessions;
 
+  function exportCSV() {
+    if (filtered.length === 0) return;
+    const headers = ["Session ID", "Lead Status", "Updated At", "Messages Count", "Latest Message"];
+    const rows = filtered.map((s) => [
+      `"${s.sessionId}"`,
+      `"${s.isLead ? 'Lead' : 'Visitor'}"`,
+      `"${new Date(s.updatedAt).toLocaleString()}"`,
+      `"${s.messages.length}"`,
+      `"${(s.messages[s.messages.length - 1]?.content || '').replace(/"/g, '""')}"`,
+    ]);
+    const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `ravi-gupta-chat-sessions-${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   return (
     <div className="p-8">
       <div className="flex items-center justify-between mb-6">
@@ -42,9 +62,10 @@ export default function ChatSessionsPage() {
           <h1 className="text-3xl font-bold text-white">Chat Sessions</h1>
           <p className="text-white/40 mt-1">{safeSessions.length} total · {safeSessions.filter((s) => s.isLead).length} leads</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
           <button onClick={() => setFilter("all")} className={`text-sm px-4 py-2 rounded-lg border transition-colors ${filter === "all" ? "bg-violet-600/20 border-violet-500/30 text-violet-400" : "border-white/10 text-white/50 hover:text-white"}`}>All</button>
           <button onClick={() => setFilter("leads")} className={`text-sm px-4 py-2 rounded-lg border transition-colors ${filter === "leads" ? "bg-orange-600/20 border-orange-500/30 text-orange-400" : "border-white/10 text-white/50 hover:text-white"}`}>🎯 Leads Only</button>
+          <button onClick={exportCSV} className="text-sm px-4 py-2 rounded-lg bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-600/30 transition-colors flex items-center gap-1.5 font-medium">📊 Export CSV</button>
         </div>
       </div>
       {loading ? (

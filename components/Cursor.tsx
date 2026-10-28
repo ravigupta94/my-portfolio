@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 
 /**
  * Custom cursor — dot + ring that follow the mouse.
+ * Uses event delegation for zero-re-render high performance.
  * Hides on touch devices.
  */
 export default function Cursor() {
@@ -16,14 +17,14 @@ export default function Cursor() {
     if (!dot || !ring) return;
 
     // Hide on touch devices
-    if ('ontouchstart' in window) {
+    if (typeof window !== 'undefined' && 'ontouchstart' in window) {
       dot.style.display = 'none';
       ring.style.display = 'none';
       return;
     }
 
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
+    let mouseX = -100, mouseY = -100;
+    let ringX = -100, ringY = -100;
     let rafId: number;
 
     const onMouseMove = (e: MouseEvent) => {
@@ -31,47 +32,33 @@ export default function Cursor() {
       mouseY = e.clientY;
       dot.style.left = `${mouseX}px`;
       dot.style.top = `${mouseY}px`;
+
+      // Check if hovering over clickable element using event delegation
+      const target = e.target as HTMLElement | null;
+      if (target && target.closest('a, button, [role="button"], input, textarea, [data-cursor-hover]')) {
+        dot.classList.add('cursor-hover');
+        ring.classList.add('cursor-hover');
+      } else {
+        dot.classList.remove('cursor-hover');
+        ring.classList.remove('cursor-hover');
+      }
     };
 
-    // Smooth ring follow
+    // Smooth ring follow with damping
     const animateRing = () => {
-      ringX += (mouseX - ringX) * 0.12;
-      ringY += (mouseY - ringY) * 0.12;
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
       ring.style.left = `${ringX}px`;
       ring.style.top = `${ringY}px`;
       rafId = requestAnimationFrame(animateRing);
     };
 
-    const onMouseEnterHoverable = () => {
-      dot.classList.add('cursor-hover');
-      ring.classList.add('cursor-hover');
-    };
-
-    const onMouseLeaveHoverable = () => {
-      dot.classList.remove('cursor-hover');
-      ring.classList.remove('cursor-hover');
-    };
-
-    const addHoverListeners = () => {
-      const hoverables = document.querySelectorAll('a, button, [data-cursor-hover]');
-      hoverables.forEach((el) => {
-        el.addEventListener('mouseenter', onMouseEnterHoverable);
-        el.addEventListener('mouseleave', onMouseLeaveHoverable);
-      });
-    };
-
-    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
     rafId = requestAnimationFrame(animateRing);
-    addHoverListeners();
-
-    // Re-scan DOM for new hover targets (sections load async)
-    const observer = new MutationObserver(addHoverListeners);
-    observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
       cancelAnimationFrame(rafId);
-      observer.disconnect();
     };
   }, []);
 

@@ -4,7 +4,9 @@ import Stats from '@/sections/Stats';
 import Skills from '@/sections/Skills';
 import ExperienceSection from '@/sections/Experience';
 import Projects from '@/sections/Projects';
+import PricingEstimator from '@/sections/PricingEstimator';
 import Company from '@/sections/Company';
+import Testimonials from '@/sections/Testimonials';
 import Contact from '@/sections/Contact';
 
 /**
@@ -20,7 +22,9 @@ export default function HomePage() {
       <Skills />
       <ExperienceSection />
       <Projects />
+      <PricingEstimator />
       <Company />
+      <Testimonials />
       <Contact />
     </>
   );

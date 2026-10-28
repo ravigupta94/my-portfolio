@@ -231,11 +231,14 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3.5"
           style={{ animation: 'fadeUp 0.6s ease 0.75s both' }}
         >
           <a href="#projects" className="btn-primary">
             <span>View Projects</span>
+          </a>
+          <a href="#estimate" className="btn-outline">
+            <span>⚡ Calculate Project Cost</span>
           </a>
           <a href="#contact" className="btn-outline">
             <span>Hire Me / Contact</span>

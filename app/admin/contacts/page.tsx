@@ -68,6 +68,26 @@ export default function ContactsPage() {
     }
   }
 
+  function exportCSV() {
+    if (safeList.length === 0) return;
+    const headers = ["Date", "Name", "Email", "Status", "Message"];
+    const rows = safeList.map((m) => [
+      `"${new Date(m.createdAt).toLocaleString()}"`,
+      `"${(m.name || '').replace(/"/g, '""')}"`,
+      `"${(m.email || '').replace(/"/g, '""')}"`,
+      `"${m.read ? 'Read' : 'Unread'}"`,
+      `"${(m.message || '').replace(/"/g, '""')}"`,
+    ]);
+    const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(r => r.join(","))].join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `ravi-gupta-inquiries-${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   const safeList = Array.isArray(messages) ? messages : [];
   const unreadCount = safeList.filter((m) => !m.read).length;
 
@@ -120,6 +140,12 @@ export default function ContactsPage() {
             }`}
           >
             Unread {unreadCount > 0 && `(${unreadCount})`}
+          </button>
+          <button
+            onClick={exportCSV}
+            className="text-sm px-4 py-2 rounded-lg bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-600/30 transition-colors flex items-center gap-1.5 font-medium"
+          >
+            📊 Export CSV
           </button>
         </div>
       </div>
