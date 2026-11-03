@@ -54,7 +54,7 @@ const ADDONS: Addon[] = [
   { id: 'auth', name: 'User Auth & Role Management', desc: 'Secure JWT, social login & RBAC', inr: 8000, usd: 100 },
   { id: 'payment', name: 'Payment Gateway Integration', desc: 'Stripe, Razorpay, or subscriptions', inr: 10000, usd: 120 },
   { id: 'admin', name: 'Custom Admin CMS Dashboard', desc: 'CRUD tables, filters & analytics', inr: 15000, usd: 180 },
-  { id: 'ai_feat', name: 'AI Features & Chatbot', desc: 'Gemini/OpenAI intelligence integration', inr: 18000, usd: 220 },
+  { id: 'ai_feat', name: 'AI Features & Chatbot', desc: 'Custom AI assistant & LLM integration', inr: 18000, usd: 220 },
   { id: 'realtime', name: 'Real-time Chat & WebSockets', desc: 'Instant messaging & live updates', inr: 12000, usd: 150 },
   { id: 'seo', name: 'Advanced SEO & Speed Optimization', desc: 'Lighthouse 95+, schema & meta', inr: 6000, usd: 80 },
 ];
