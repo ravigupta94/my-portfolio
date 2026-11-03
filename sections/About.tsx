@@ -84,7 +84,7 @@ export default function About() {
                 </span>
               ))}
               <a
-                href="https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline text-xs py-1.5 px-3 ml-1 inline-flex items-center gap-1.5 hover:border-violet-500"

@@ -14,15 +14,15 @@ export const DEFAULT_KB: Partial<IKnowledgeBase> = {
       github: 'https://github.com/ravigupta94',
       instagram: 'https://www.instagram.com/_ravi_gupta9000/',
     },
-    resume: 'https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link',
+    resume: 'https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view',
   },
   about:
-    "Ravi is a full stack developer with a practical, no-nonsense approach to building software — he'd rather ship something reliable than something flashy but broken. Alongside his development work, he founded ARintelligenceX, a small team focused on doing honest, quality work for clients instead of overpromising and underdelivering.",
+    "Ravi is a Technical Support Engineer & Full Stack Web Developer with a practical approach to building software. He has experience at AnG India Ltd. (Windows Server monitoring, Intelliv platform, SSMS), Namisite Technologies (PHP Laravel developer), DigiCoders, and founded ARintelligenceX, delivering web, ERP/CRM, and AI solutions.",
   skills: {
     frontend: 'React, Next.js, JavaScript/TypeScript, Tailwind CSS, HTML5, CSS3',
-    backend: 'Node.js, Express.js, REST API design',
-    database: 'MongoDB, MySQL',
-    other: 'Git/GitHub, AI/API integration, basic UI/UX, deployment (Vercel, Render)',
+    backend: 'Node.js, Express.js, PHP, Laravel, REST API design',
+    database: 'SQL Server (SSMS), MySQL, MongoDB',
+    other: 'Windows Server, Intelliv, Git/GitHub, AI integration, deployment (Vercel, Netlify)',
   },
   company: {
     name: 'ARintelligenceX',
@@ -37,13 +37,13 @@ export const DEFAULT_KB: Partial<IKnowledgeBase> = {
     website: 'https://arintelligenx.vercel.app/',
   },
   projects:
-    '1. Hospital Management System — Digitizes patient records, appointment scheduling, doctor rosters, billing, and admin operations for hospitals/clinics, replacing manual paperwork with a centralized, accurate system.\n2. Restaurant Management System — Manages orders, table bookings, billing, inventory, and staff operations for restaurants, speeding up service and cutting manual errors.\n3. Apna Bazar — A dynamic e-commerce/marketplace platform where products, categories, and inventory are fully manageable from an admin panel without touching code.',
+    '1. ARintelligenceX Platform — IT services and software platform with online enquiry workflows.\n2. Singh Delight — Responsive restaurant website (https://singh-delight.netlify.app/).\n3. Hospital Management System — Digitizes patient records, appointment scheduling, doctor rosters, and billing.\n4. Apna Bazar — Dynamic e-commerce/marketplace platform fully manageable from admin CMS.',
   services:
-    'Custom web application development, Mobile/web app development, AI integration & AI-powered features, UI/UX design, Email migration & setup, CRM/ERP systems, Digital marketing',
+    'Custom web application development, Technical Support & Windows Server ops, Mobile/web apps, AI integration, UI/UX design, CRM/ERP systems, Digital marketing',
   conversationRules: [
     'If asked "Who is Ravi?" → give the About summary, offer to share skills/projects/company info',
-    'If asked for Ravi\'s resume, CV, biodata, or background PDF → immediately provide his official Google Drive link: https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link and mention they can also view or print the ATS-friendly resume modal right on this website',
-    'If asked about projects → summarize the 3 projects, ask if they want details on a specific one',
+    'If asked for Ravi\'s resume, CV, biodata, or background PDF → immediately provide his official Google Drive link: https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view and mention they can also view or print the ATS-friendly resume modal right on this website',
+    'If asked about projects → summarize his projects (ARintelligenceX, Singh Delight, Hospital Management, Apna Bazar), ask if they want details on a specific one',
     'If asked "Is Ravi available for freelance/hire?" → say yes, direct them to fill the contact form or email directly, and ask briefly what kind of project they have in mind (to qualify the lead)',
     'If asked about pricing/cost estimate → do NOT give a fixed number; explain that cost depends on scope, and suggest booking a quick call or sending project details via contact form or the live Project Cost Estimator on the page',
     'If asked something outside the knowledge base → politely say that is not something it can answer, and redirect to contact Ravi directly',
@@ -54,12 +54,12 @@ export const DEFAULT_KB: Partial<IKnowledgeBase> = {
     {
       question: 'Who is Ravi Gupta?',
       answer:
-        'Ravi is a full stack developer and the founder of ARintelligenceX, a dev company based in Noida. He builds real, working software — web apps, AI features, admin systems — with a focus on honesty and reliability over hype. Want to know more about his projects or his company?',
+        'Ravi is a Technical Support Engineer and Full Stack Developer, as well as the founder of ARintelligenceX based in Noida. He has hands-on experience in Windows Server monitoring, PHP/Laravel, and modern Next.js/React development.',
     },
     {
       question: "Can I see Ravi's resume or CV?",
       answer:
-        "Certainly! You can access Ravi's official resume on Google Drive here: https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link . You can also view or print the ATS-friendly resume modal directly from the site.",
+        "Certainly! You can access Ravi's official resume on Google Drive here: https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view . You can also view or print the ATS-friendly resume modal directly from the site.",
     },
     {
       question: 'What has Ravi built?',

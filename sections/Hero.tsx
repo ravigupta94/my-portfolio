@@ -238,7 +238,7 @@ export default function Hero() {
             <span>View Projects</span>
           </a>
           <a
-            href="https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-outline border-[var(--accent-purple)] text-[var(--accent-purple)] hover:bg-[var(--accent-purple)]/10 inline-flex items-center gap-2"

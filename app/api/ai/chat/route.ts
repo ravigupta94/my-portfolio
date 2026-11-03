@@ -21,7 +21,7 @@ function generateSmartFallback(lastUserMessage: string): string {
   const query = (lastUserMessage || '').toLowerCase();
 
   if (/resume|cv|biodata|curriculum/i.test(query)) {
-    return "You can view and download Ravi's official resume on Google Drive here: https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link .\n\nYou can also click the 'Resume' button in the navbar to inspect or print the ATS-optimized version directly!";
+    return "You can view and download Ravi's official resume on Google Drive here: https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view .\n\nYou can also click the 'Resume' button in the navbar to inspect or print the ATS-optimized version directly!";
   }
 
   if (/cost|price|pricing|estimate|quote|rate|how much/i.test(query)) {

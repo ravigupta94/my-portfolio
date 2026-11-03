@@ -19,7 +19,7 @@ const quickLinks = [
   { label: 'Testimonials', href: '#testimonials' },
   { label: 'Project Cost Calculator', href: '#estimate' },
   { label: 'Company', href: '#company' },
-  { label: 'Resume (Google Drive)', href: 'https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view?usp=drive_link', external: true },
+  { label: 'Resume (Google Drive)', href: 'https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view', external: true },
   { label: 'Contact', href: '#contact' },
 ];
 
