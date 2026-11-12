@@ -230,7 +230,7 @@ export default function RaviAI() {
 
       {/* Modern High-End Chat Window */}
       <div
-        className={`fixed bottom-20 sm:bottom-24 right-3 sm:right-6 w-[94vw] sm:w-[440px] h-[600px] sm:h-[620px] max-h-[88vh] bg-[#0c0d18]/95 border border-violet-500/30 rounded-3xl shadow-[0_25px_80px_-15px_rgba(124,58,237,0.45)] z-50 flex flex-col transition-all duration-300 transform origin-bottom-right overflow-hidden backdrop-blur-2xl ${
+        className={`fixed bottom-20 sm:bottom-24 right-3 sm:right-6 w-[94vw] sm:w-[410px] h-[540px] sm:h-[570px] max-h-[calc(100dvh-105px)] bg-[#0c0d18]/95 border border-violet-500/30 rounded-3xl shadow-[0_25px_80px_-15px_rgba(124,58,237,0.45)] z-50 flex flex-col transition-all duration-300 transform origin-bottom-right overflow-hidden backdrop-blur-2xl ${
           isOpen ? 'scale-100 opacity-100 pointer-events-auto' : 'scale-90 opacity-0 pointer-events-none'
         }`}
       >
@@ -239,7 +239,7 @@ export default function RaviAI() {
         <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-cyan-600/15 rounded-full blur-3xl pointer-events-none" />
 
         {/* ─── Header Bar ────────────────────────────────────────────── */}
-        <div className="relative flex items-center justify-between p-4 border-b border-white/10 bg-gradient-to-r from-violet-950/40 via-black/40 to-indigo-950/40 backdrop-blur-xl">
+        <div className="relative flex items-center justify-between p-3.5 sm:p-4 border-b border-white/10 bg-gradient-to-r from-violet-950/40 via-black/40 to-indigo-950/40 backdrop-blur-xl shrink-0">
           <div className="flex items-center gap-3">
             {/* Glowing Avatar */}
             <div className="relative">
@@ -302,7 +302,7 @@ export default function RaviAI() {
         </div>
 
         {/* ─── Messages Area ─────────────────────────────────────────── */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
+        <div className="flex-1 min-h-0 overflow-y-auto p-3.5 sm:p-4 space-y-3.5 scroll-smooth custom-chat-scrollbar">
           {messages.length === 0 ? (
             /* Enhanced Welcome / Empty State */
             <div className="h-full flex flex-col justify-between py-2 space-y-4">
@@ -475,7 +475,7 @@ export default function RaviAI() {
 
         {/* ─── Quick Suggestion Chips (Available during chat) ──────── */}
         {messages.length > 0 && !isLoading && (
-          <div className="px-3 py-1.5 border-t border-white/5 bg-black/20 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+          <div className="px-3 py-1.5 border-t border-white/5 bg-black/20 flex items-center gap-1.5 overflow-x-auto no-scrollbar shrink-0">
             {QUICK_ACTIONS.map((action) => (
               <button
                 key={action.label}
@@ -491,7 +491,7 @@ export default function RaviAI() {
         {/* ─── Input Area ────────────────────────────────────────────── */}
         <form
           onSubmit={handleFormSubmit}
-          className="p-3 border-t border-white/10 bg-gradient-to-b from-black/20 to-black/50"
+          className="p-3 border-t border-white/10 bg-gradient-to-b from-black/20 to-black/50 shrink-0"
         >
           <div className="relative flex items-center rounded-2xl bg-white/[0.05] border border-white/15 focus-within:border-violet-500 focus-within:ring-2 focus-within:ring-violet-500/20 transition-all">
             <input
