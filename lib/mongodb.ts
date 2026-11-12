@@ -1,12 +1,14 @@
 import mongoose from 'mongoose';
 import dns from 'dns';
 
-// Fix for Windows / Node.js DNS SRV record resolution issues with MongoDB Atlas
-try {
-  dns.setServers(['8.8.8.8', '1.1.1.1']);
-  dns.setDefaultResultOrder('ipv4first');
-} catch {
-  // ignore if running in environment where setServers is restricted
+// Fix for Windows / Node.js DNS SRV record resolution issues with MongoDB Atlas (only on Windows)
+if (typeof process !== 'undefined' && process.platform === 'win32') {
+  try {
+    dns.setServers(['8.8.8.8', '1.1.1.1']);
+    dns.setDefaultResultOrder('ipv4first');
+  } catch {
+    // ignore if running in environment where setServers is restricted
+  }
 }
 
 // Fallback URI if environment variable is not defined on Vercel deployment
@@ -31,13 +33,16 @@ const cached = global.mongooseCache || { conn: null, promise: null };
 global.mongooseCache = cached;
 
 export async function connectDB() {
-  if (cached.conn) return cached.conn;
+  if (cached.conn && mongoose.connection.readyState === 1) {
+    return cached.conn;
+  }
 
-  if (!cached.promise) {
+  if (!cached.promise || mongoose.connection.readyState === 0) {
     const opts = {
       bufferCommands: false,
       serverSelectionTimeoutMS: 8000,
       connectTimeoutMS: 8000,
+      maxPoolSize: 10,
     };
     cached.promise = mongoose.connect(MONGODB_URI, opts);
   }
@@ -46,6 +51,7 @@ export async function connectDB() {
     cached.conn = await cached.promise;
   } catch (e) {
     cached.promise = null;
+    cached.conn = null;
     throw e;
   }
 

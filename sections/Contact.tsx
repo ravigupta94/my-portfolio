@@ -232,9 +232,17 @@ export default function Contact() {
                 </div>
 
                 {formState === 'error' && (
-                  <div className="flex items-center gap-2 p-3 rounded-lg bg-[rgba(239,68,68,0.08)] border border-[rgba(239,68,68,0.2)] text-sm text-red-400">
-                    <AlertCircle size={15} />
-                    {errorMsg}
+                  <div className="flex flex-col gap-2 p-3.5 rounded-xl bg-[rgba(239,68,68,0.08)] border border-[rgba(239,68,68,0.25)] text-sm text-red-400">
+                    <div className="flex items-start gap-2">
+                      <AlertCircle size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>{errorMsg}</span>
+                    </div>
+                    <a
+                      href={`mailto:raviguptasrn2004@gmail.com?subject=Portfolio%20Inquiry%20from%20${encodeURIComponent(formData.name || 'Visitor')}&body=${encodeURIComponent(formData.message || '')}`}
+                      className="text-xs text-[var(--accent-purple)] hover:underline inline-flex items-center gap-1 font-semibold ml-6"
+                    >
+                      Click here to email Ravi directly &rarr;
+                    </a>
                   </div>
                 )}
 

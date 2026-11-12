@@ -31,10 +31,22 @@ export async function POST(req: NextRequest) {
       message: "Message received! Ravi will get back to you shortly.",
       id: contact._id,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Contact POST error:', error);
+    const msg = error?.message || '';
+    const isDbError =
+      msg.includes('whitelist') ||
+      msg.includes('ServerSelectionError') ||
+      msg.includes('buffering timed out') ||
+      msg.includes('ECONNREFUSED');
+
     return NextResponse.json(
-      { success: false, error: 'Failed to send message. Please try again.' },
+      {
+        success: false,
+        error: isDbError
+          ? 'Database connection issue. Please ensure MongoDB Atlas IP access 0.0.0.0/0 is enabled, or email directly.'
+          : 'Failed to send message. Please try again.',
+      },
       { status: 500 }
     );
   }
