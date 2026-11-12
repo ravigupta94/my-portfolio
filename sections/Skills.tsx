@@ -96,25 +96,25 @@ export default function Skills() {
       className="section-padding"
       aria-labelledby="skills-heading"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <p className="section-label reveal mb-3">Skills</p>
           <h2
             id="skills-heading"
-            className="text-4xl sm:text-5xl font-bold tracking-tight reveal"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight reveal"
           >
             What I <span className="gradient-text">work with</span>
           </h2>
-          <p className="mt-4 text-[var(--text-secondary)] max-w-xl mx-auto reveal">
+          <p className="mt-4 text-[var(--text-secondary)] max-w-xl mx-auto reveal px-2 text-sm sm:text-base">
             A practical toolkit built from real project work — not tutorial completions.
           </p>
         </div>
 
         {/* Categories grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {CATEGORY_ORDER.map((category) => (
-            <div key={category} className="glass-card p-8 reveal">
+            <div key={category} className="glass-card p-4 sm:p-7 reveal">
               <div className="flex items-center gap-3 mb-6">
                 <div
                   className="w-3 h-3 rounded-full"

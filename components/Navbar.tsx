@@ -42,7 +42,7 @@ export default function Navbar() {
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
           {/* Logo */}
           <Link
             href="/"
@@ -112,7 +112,7 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 glass-card mx-4 mt-2 p-6 rounded-2xl border border-white/10 shadow-2xl">
+          <div className="md:hidden absolute top-full left-0 right-0 glass-card mx-3 sm:mx-4 mt-2 p-4 sm:p-6 rounded-2xl border border-white/10 shadow-2xl max-h-[82vh] overflow-y-auto">
             <ul className="flex flex-col gap-4" role="list">
               {navLinks.map((link) => (
                 <li key={link.href}>

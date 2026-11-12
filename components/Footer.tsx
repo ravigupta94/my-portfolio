@@ -27,10 +27,10 @@ export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <footer className="border-t border-[var(--border-dark)] bg-[var(--bg-dark)] pt-16 pb-8">
-      <div className="max-w-6xl mx-auto px-6">
+    <footer className="border-t border-[var(--border-dark)] bg-[var(--bg-dark)] pt-12 sm:pt-16 pb-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Top section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-10 sm:mb-12">
           {/* Brand */}
           <div>
             <div className="text-2xl font-bold gradient-text mb-3">Ravi Gupta</div>

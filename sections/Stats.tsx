@@ -41,15 +41,15 @@ function useCountUp(target: number, duration: number = 1800, start: boolean = fa
 function StatCard({ stat, active }: { stat: Stat; active: boolean }) {
   const count = useCountUp(stat.value, 1600, active);
   return (
-    <div className="flex flex-col items-center text-center p-6">
+    <div className="flex flex-col items-center text-center p-3.5 sm:p-6">
       <div
-        className="text-5xl sm:text-6xl font-extrabold mb-2 tabular-nums"
+        className="text-3xl sm:text-5xl lg:text-6xl font-extrabold mb-1 sm:mb-2 tabular-nums"
         style={{ color: stat.color }}
         aria-label={`${stat.value}${stat.suffix} ${stat.label}`}
       >
         {count}{stat.suffix}
       </div>
-      <div className="text-sm text-[var(--text-secondary)] font-medium">{stat.label}</div>
+      <div className="text-xs sm:text-sm text-[var(--text-secondary)] font-medium">{stat.label}</div>
     </div>
   );
 }
@@ -77,7 +77,7 @@ export default function Stats() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 border-y border-[var(--border-dark)] relative overflow-hidden"
+      className="py-12 sm:py-20 border-y border-[var(--border-dark)] relative overflow-hidden"
       aria-label="Statistics"
     >
       {/* Background glow */}
@@ -88,7 +88,7 @@ export default function Stats() {
         }}
         aria-hidden="true"
       />
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-[var(--border-dark)] border border-[var(--border-dark)] rounded-2xl overflow-hidden glass-card">
           {STATS.map((stat) => (
             <StatCard key={stat.label} stat={stat} active={active} />

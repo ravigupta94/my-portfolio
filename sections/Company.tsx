@@ -93,42 +93,42 @@ export default function Company() {
       className="section-padding"
       aria-labelledby="company-heading"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <p className="section-label reveal mb-3">Company</p>
           <h2
             id="company-heading"
-            className="text-4xl sm:text-5xl font-bold tracking-tight reveal"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight reveal"
           >
             <span className="gradient-text">{company.name}</span>
           </h2>
-          <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto reveal font-light italic">
+          <p className="mt-4 text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto reveal font-light italic px-2">
             &quot;{company.tagline}&quot;
           </p>
         </div>
 
         {/* Description + Stats */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          <div className="lg:col-span-2 glass-card p-8 reveal">
-            <p className="text-[var(--text-secondary)] leading-relaxed mb-6">{company.description}</p>
-            <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
+          <div className="lg:col-span-2 glass-card p-4 sm:p-8 reveal">
+            <p className="text-[var(--text-secondary)] leading-relaxed mb-6 text-sm sm:text-base">{company.description}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <h4 className="text-xs font-semibold uppercase tracking-widest text-[var(--accent-purple)] mb-2">
                   Mission
                 </h4>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{company.mission}</p>
+                <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">{company.mission}</p>
               </div>
               <div>
                 <h4 className="text-xs font-semibold uppercase tracking-widest text-[var(--accent-blue)] mb-2">
                   Vision
                 </h4>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{company.vision}</p>
+                <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">{company.vision}</p>
               </div>
             </div>
           </div>
 
-          <div className="glass-card p-8 reveal flex flex-col gap-6 justify-center">
+          <div className="glass-card p-5 sm:p-8 reveal flex flex-col gap-5 sm:gap-6 justify-center">
             <div className="flex items-center gap-3">
               <Users size={20} className="text-[var(--accent-purple)]" />
               <div>

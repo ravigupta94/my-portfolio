@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Star, Quote, CheckCircle } from 'lucide-react';
+import SpotlightCard from '@/components/reactbits/SpotlightCard';
 
 interface Testimonial {
   name: string;
@@ -86,28 +87,29 @@ export default function Testimonials() {
       className="section-padding relative"
       aria-labelledby="testimonials-heading"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <p className="section-label reveal mb-3">Feedback</p>
           <h2
             id="testimonials-heading"
-            className="text-4xl sm:text-5xl font-bold tracking-tight reveal"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight reveal"
           >
             What Clients <span className="gradient-text">Say</span>
           </h2>
-          <p className="mt-4 text-[var(--text-secondary)] max-w-xl mx-auto reveal">
+          <p className="mt-4 text-[var(--text-secondary)] max-w-xl mx-auto reveal px-2 text-sm sm:text-base">
             Honest feedback from founders, doctors, and business leaders who run software built by Ravi.
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Testimonials Grid with ReactBits SpotlightCard */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {TESTIMONIALS.map((t, idx) => (
-            <div
+            <SpotlightCard
               key={t.name}
-              className="glass-card p-7 flex flex-col justify-between reveal relative group hover:border-violet-500/30 transition-all duration-300"
+              className="p-5 sm:p-7 flex flex-col justify-between reveal relative group hover:border-violet-500/40 transition-all duration-300 !rounded-2xl"
               style={{ transitionDelay: `${idx * 0.1}s` }}
+              spotlightColor="rgba(168, 85, 247, 0.28)"
             >
               <div>
                 {/* Rating & Project Badge */}
@@ -147,7 +149,7 @@ export default function Testimonials() {
                   </p>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>

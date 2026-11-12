@@ -77,6 +77,21 @@ body {
   cursor: none;
 }
 
+/* Touch & Mobile device optimization - restore native touch cursor */
+@media (hover: none) or (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+  .public-site,
+  .public-site a,
+  .public-site button,
+  .public-site [role="button"],
+  body {
+    cursor: auto !important;
+  }
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    SCROLLBAR
    ═══════════════════════════════════════════════════════════════════════════ */
@@ -330,6 +345,12 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .section-padding {
+    padding: 44px 0;
+  }
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    SCROLL REVEAL (GSAP targets)
    ═══════════════════════════════════════════════════════════════════════════ */
@@ -494,3 +515,15 @@ body {
   z-index: 0;
   pointer-events: none;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UTILITIES
+   ═══════════════════════════════════════════════════════════════════════════ */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

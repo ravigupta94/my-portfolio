@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Code2, Users, Lightbulb, CheckCircle } from 'lucide-react';
+import SpotlightCard from '@/components/reactbits/SpotlightCard';
 
 const traits = [
   { icon: Code2, label: 'Practical Builder', desc: 'Ships real products, not demos' },
@@ -45,14 +46,14 @@ export default function About() {
       className="section-padding"
       aria-labelledby="about-heading"
     >
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left — text */}
           <div>
             <p className="section-label reveal mb-4">About</p>
             <h2
               id="about-heading"
-              className="text-4xl sm:text-5xl font-bold tracking-tight mb-8 reveal"
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6 sm:mb-8 reveal"
             >
               Building software that{' '}
               <span className="gradient-text">actually matters</span>
@@ -94,20 +95,21 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right — trait cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Right — trait cards with ReactBits SpotlightCard */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {traits.map(({ icon: Icon, label, desc }, i) => (
-              <div
+              <SpotlightCard
                 key={label}
-                className="glass-card p-6 reveal"
+                className="p-4 sm:p-6 reveal !rounded-2xl transition-all duration-300 hover:border-violet-500/40"
                 style={{ transitionDelay: `${i * 0.08}s` }}
+                spotlightColor="rgba(124, 58, 237, 0.35)"
               >
                 <div className="w-10 h-10 rounded-xl bg-[rgba(124,58,237,0.12)] flex items-center justify-center mb-4">
                   <Icon size={20} className="text-[var(--accent-purple)]" />
                 </div>
                 <h3 className="font-semibold text-[var(--text-primary)] mb-1">{label}</h3>
                 <p className="text-sm text-[var(--text-secondary)]">{desc}</p>
-              </div>
+              </SpotlightCard>
             ))}
           </div>
         </div>

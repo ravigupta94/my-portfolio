@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ExternalLink, ArrowRight, X, Sparkles, CheckCircle2 } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
+import SpotlightCard from '@/components/reactbits/SpotlightCard';
 
 interface Project {
   _id: string;
@@ -104,22 +105,22 @@ export default function Projects() {
       className="section-padding relative"
       aria-labelledby="projects-heading"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-10 sm:mb-12">
           <p className="section-label reveal mb-3">Work</p>
           <h2
             id="projects-heading"
-            className="text-4xl sm:text-5xl font-bold tracking-tight reveal"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight reveal"
           >
             Featured <span className="gradient-text">Projects</span>
           </h2>
-          <p className="mt-4 text-[var(--text-secondary)] max-w-xl mx-auto reveal">
+          <p className="mt-4 text-[var(--text-secondary)] max-w-xl mx-auto reveal px-2 text-sm sm:text-base">
             Production systems built for businesses — click any card for architecture &amp; case study.
           </p>
 
           {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-8 reveal">
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-6 sm:mt-8 reveal max-w-full overflow-x-auto py-1">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -144,11 +145,12 @@ export default function Projects() {
               : { bg: 'rgba(124,58,237,0.12)', text: '#a78bfa' };
 
             return (
-              <article
+              <SpotlightCard
                 key={project._id}
                 onClick={() => setSelectedCaseStudy(project)}
-                className="glass-card p-6 flex flex-col reveal group cursor-pointer hover:border-violet-500/40 hover:-translate-y-1 transition-all duration-300"
+                className="p-4 sm:p-6 flex flex-col reveal group cursor-pointer hover:border-violet-500/40 hover:-translate-y-1 transition-all duration-300 !rounded-2xl"
                 style={{ transitionDelay: `${i * 0.1}s` }}
+                spotlightColor="rgba(124, 58, 237, 0.32)"
                 aria-label={project.title}
               >
                 {/* Category badge & Case study hint */}
@@ -234,7 +236,7 @@ export default function Projects() {
                     </a>
                   )}
                 </div>
-              </article>
+              </SpotlightCard>
             );
           })}
         </div>
@@ -256,17 +258,18 @@ export default function Projects() {
       {/* Case Study Modal */}
       {selectedCaseStudy && (
         <div
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
           onClick={() => setSelectedCaseStudy(null)}
         >
           <div
-            className="bg-[#0f0f18] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative shadow-2xl animate-fade-in"
+            className="bg-[#0f0f18] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[88vh] overflow-y-auto p-4 sm:p-8 relative shadow-2xl animate-fade-in"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
             <button
               onClick={() => setSelectedCaseStudy(null)}
-              className="absolute top-5 right-5 p-2 rounded-full hover:bg-white/10 text-white/50 hover:text-white transition-colors"
+              className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-full hover:bg-white/10 text-white/50 hover:text-white transition-colors"
+              aria-label="Close modal"
             >
               <X size={20} />
             </button>
@@ -278,7 +281,7 @@ export default function Projects() {
               </span>
             )}
 
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 pr-8">
               {selectedCaseStudy.title}
             </h3>
 

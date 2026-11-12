@@ -83,31 +83,31 @@ export default function ExperienceSection() {
       className="section-padding"
       aria-labelledby="experience-heading"
     >
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 sm:mb-16">
           <p className="section-label reveal mb-3">Journey</p>
           <h2
             id="experience-heading"
-            className="text-4xl sm:text-5xl font-bold tracking-tight reveal"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight reveal"
           >
             Experience &amp; <span className="gradient-text">Timeline</span>
           </h2>
         </div>
 
         {/* Timeline */}
-        <div className="relative pl-12">
+        <div className="relative pl-8 sm:pl-12">
           {/* Vertical line */}
-          <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--accent-purple)] via-[var(--accent-blue)] to-transparent" />
+          <div className="absolute left-3 sm:left-5 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--accent-purple)] via-[var(--accent-blue)] to-transparent" />
 
-          <div className="space-y-10">
+          <div className="space-y-8 sm:space-y-10">
             {experiences.map((exp, i) => (
               <div key={exp._id} className="relative reveal">
                 {/* Dot */}
-                <div className="absolute -left-7 top-1 flex items-center justify-center">
+                <div className="absolute -left-5 sm:-left-7 top-1 flex items-center justify-center">
                   <div className="timeline-dot" />
                 </div>
 
-                <div className="glass-card p-6">
+                <div className="glass-card p-4 sm:p-6">
                   <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                     <div>
                       <h3 className="font-bold text-[var(--text-primary)] text-lg">{exp.title}</h3>

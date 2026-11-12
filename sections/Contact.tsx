@@ -109,13 +109,13 @@ export default function Contact() {
       className="section-padding"
       aria-labelledby="contact-heading"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <p className="section-label reveal mb-3">Contact</p>
           <h2
             id="contact-heading"
-            className="text-4xl sm:text-5xl font-bold tracking-tight reveal"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight reveal"
           >
             Let&apos;s <span className="gradient-text">work together</span>
           </h2>
@@ -125,7 +125,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Left — contact info */}
           <div className="reveal-left">
             <div className="flex items-center gap-2 mb-6">
@@ -163,7 +163,7 @@ export default function Contact() {
           </div>
 
           {/* Right — form */}
-          <div className="glass-card p-8 reveal-right">
+          <div className="glass-card p-5 sm:p-8 reveal-right">
             <h3 className="font-bold text-xl text-[var(--text-primary)] mb-6">Send a message</h3>
 
             {formState === 'success' ? (

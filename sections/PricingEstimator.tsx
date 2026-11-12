@@ -155,25 +155,25 @@ Estimated Budget: ${currency === 'INR' ? '₹' : '$'}${totalCost.toLocaleString(
       className="section-padding relative overflow-hidden"
       aria-labelledby="estimate-heading"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <p className="section-label reveal mb-3 flex items-center justify-center gap-1.5">
             <Calculator size={14} /> Cost Calculator
           </p>
-          <h2 id="estimate-heading" className="text-4xl sm:text-5xl font-bold tracking-tight reveal">
+          <h2 id="estimate-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight reveal">
             Estimate Your <span className="gradient-text">Project Scope</span>
           </h2>
-          <p className="mt-4 text-[var(--text-secondary)] max-w-xl mx-auto reveal">
+          <p className="mt-4 text-[var(--text-secondary)] max-w-xl mx-auto reveal px-2 text-sm sm:text-base">
             Select your requirements to get an instant realistic ballpark estimate for your software.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
           {/* Left 2 Cols: Interactive Selectors */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-6 sm:space-y-8">
             {/* 1. Project Type */}
-            <div className="glass-card p-6 reveal">
+            <div className="glass-card p-4 sm:p-6 reveal">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-white/70">
                   1. Select Project Type
@@ -228,7 +228,7 @@ Estimated Budget: ${currency === 'INR' ? '₹' : '$'}${totalCost.toLocaleString(
             </div>
 
             {/* 2. Features / Addons */}
-            <div className="glass-card p-6 reveal">
+            <div className="glass-card p-4 sm:p-6 reveal">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-white/70 mb-4">
                 2. Key Capabilities &amp; Features
               </h3>
@@ -240,7 +240,7 @@ Estimated Budget: ${currency === 'INR' ? '₹' : '$'}${totalCost.toLocaleString(
                     <div
                       key={a.id}
                       onClick={() => toggleAddon(a.id)}
-                      className={`p-3.5 rounded-xl border cursor-pointer transition-all duration-200 flex items-start gap-3 select-none ${
+                      className={`p-3 sm:p-3.5 rounded-xl border cursor-pointer transition-all duration-200 flex items-start gap-3 select-none ${
                         isChecked
                           ? 'border-violet-500/80 bg-violet-600/10'
                           : 'border-white/10 bg-white/5 hover:border-white/20'
@@ -267,11 +267,11 @@ Estimated Budget: ${currency === 'INR' ? '₹' : '$'}${totalCost.toLocaleString(
             </div>
 
             {/* 3. Delivery Speed */}
-            <div className="glass-card p-6 reveal">
+            <div className="glass-card p-4 sm:p-6 reveal">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-white/70 mb-4">
                 3. Expected Delivery Speed
               </h3>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
                 {TIMELINES.map((tl) => {
                   const isSelected = timeline === tl.id;
                   return (
@@ -279,7 +279,7 @@ Estimated Budget: ${currency === 'INR' ? '₹' : '$'}${totalCost.toLocaleString(
                       type="button"
                       key={tl.id}
                       onClick={() => setTimeline(tl.id)}
-                      className={`py-3 px-2 rounded-xl text-center border text-xs transition-all duration-200 ${
+                      className={`py-3 px-3 rounded-xl text-center border text-xs transition-all duration-200 ${
                         isSelected
                           ? 'border-violet-500 bg-violet-600/20 text-white font-medium'
                           : 'border-white/10 bg-white/5 text-[var(--text-secondary)] hover:border-white/20'
@@ -294,7 +294,7 @@ Estimated Budget: ${currency === 'INR' ? '₹' : '$'}${totalCost.toLocaleString(
           </div>
 
           {/* Right Col: Price Summary Card & Direct Inquiry Form */}
-          <div className="glass-card p-6 lg:sticky lg:top-24 border border-violet-500/30 reveal">
+          <div className="glass-card p-4 sm:p-6 lg:sticky lg:top-24 border border-violet-500/30 reveal">
             <div className="flex items-center gap-2 mb-2">
               <Sparkles size={16} className="text-violet-400" />
               <span className="text-xs font-semibold uppercase tracking-wider text-violet-400">

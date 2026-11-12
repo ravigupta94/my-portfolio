@@ -180,10 +180,10 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
         {/* Location badge */}
         <div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border-glass)] bg-[var(--glass-bg)] backdrop-blur-sm text-xs text-[var(--text-secondary)] mb-8"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full border border-[var(--border-glass)] bg-[var(--glass-bg)] backdrop-blur-sm text-xs text-[var(--text-secondary)] mb-6 sm:mb-8"
           style={{ animation: 'fadeUp 0.5s ease 0.2s both' }}
         >
           <MapPin size={12} className="text-[var(--accent-purple)]" />
@@ -192,7 +192,7 @@ export default function Hero() {
 
         {/* Name */}
         <h1
-          className="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-4 leading-none"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-4 leading-none break-words"
           style={{ animation: 'fadeUp 0.6s ease 0.3s both' }}
         >
           <span className="gradient-text">Ravi</span>{' '}
@@ -201,7 +201,7 @@ export default function Hero() {
 
         {/* Title */}
         <p
-          className="text-lg sm:text-xl text-[var(--text-secondary)] font-medium mb-6"
+          className="text-base sm:text-lg md:text-xl text-[var(--text-secondary)] font-medium mb-6 px-2"
           style={{ animation: 'fadeUp 0.6s ease 0.45s both' }}
         >
           Full Stack Developer{' '}
@@ -219,11 +219,11 @@ export default function Hero() {
 
         {/* Typing tagline */}
         <div
-          className="h-10 flex items-center justify-center mb-10"
+          className="min-h-[44px] flex items-center justify-center mb-8 sm:mb-10 px-2"
           style={{ animation: 'fadeUp 0.6s ease 0.6s both' }}
           aria-live="polite"
         >
-          <p className="text-xl sm:text-2xl font-light text-[var(--text-secondary)]">
+          <p className="text-lg sm:text-xl md:text-2xl font-light text-[var(--text-secondary)]">
             <span ref={typingRef} className="text-[var(--text-primary)]" />
             <span className="inline-block w-0.5 h-6 bg-[var(--accent-purple)] ml-1 animate-[cursorBlink_1s_step-end_infinite]" />
           </p>
@@ -231,32 +231,32 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-3.5 flex-wrap"
+          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3.5 w-full max-w-sm sm:max-w-none mx-auto"
           style={{ animation: 'fadeUp 0.6s ease 0.75s both' }}
         >
-          <a href="#projects" className="btn-primary">
+          <a href="#projects" className="btn-primary text-center justify-center">
             <span>View Projects</span>
           </a>
           <a
             href="https://drive.google.com/file/d/1imjweXbWI-MzPY7KQHxSeNCtxtUmUHos/view"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline border-[var(--accent-purple)] text-[var(--accent-purple)] hover:bg-[var(--accent-purple)]/10 inline-flex items-center gap-2"
+            className="btn-outline border-[var(--accent-purple)] text-[var(--accent-purple)] hover:bg-[var(--accent-purple)]/10 inline-flex items-center justify-center gap-2"
           >
             <span>📄 View Resume (Drive)</span>
             <ExternalLink size={14} />
           </a>
-          <a href="#estimate" className="btn-outline">
+          <a href="#estimate" className="btn-outline text-center justify-center">
             <span>⚡ Calculate Cost</span>
           </a>
-          <a href="#contact" className="btn-outline">
+          <a href="#contact" className="btn-outline text-center justify-center">
             <span>Hire Me</span>
           </a>
         </div>
 
         {/* Stats row */}
         <div
-          className="flex items-center justify-center gap-8 sm:gap-12 mt-16 flex-wrap"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mt-12 sm:mt-16 w-full max-w-md sm:max-w-none mx-auto"
           style={{ animation: 'fadeUp 0.6s ease 0.9s both' }}
         >
           {[
@@ -265,8 +265,8 @@ export default function Hero() {
             { value: '7', label: 'Team Members' },
             { value: '15+', label: 'Clients Served' },
           ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-3xl font-bold gradient-text">{stat.value}</div>
+            <div key={stat.label} className="text-center p-2 rounded-xl bg-white/[0.02] sm:bg-transparent border border-white/5 sm:border-0">
+              <div className="text-2xl sm:text-3xl font-bold gradient-text">{stat.value}</div>
               <div className="text-xs text-[var(--text-muted)] mt-1">{stat.label}</div>
             </div>
           ))}
